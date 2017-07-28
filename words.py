@@ -4,6 +4,8 @@
 
 import json
 import pickle
+import PorterStemmer
+
 words = {'awareness':['awareness'], 'drugs':['drugs'], 'finance':['finance'],
 'future_prospects':['future_prospects'], 'legal':['legal'],
  'statistics':['statistics'], 'stigma':['stigma']}
@@ -16,7 +18,7 @@ for cl in classes:
 	with open('classes/'+cl+'.json') as j:
 		temp = json.load(j)
 		for t in temp:
-			arr = t['word'].encode('utf8').split()
+			arr = PorterStemmer.access(t['word']).encode('utf8').split()
 			for a in arr:
 				words[cl].append(a)
 

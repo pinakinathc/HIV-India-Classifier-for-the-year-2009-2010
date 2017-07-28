@@ -380,8 +380,10 @@ def access(data):
         else:
             if word:
                 temp = p.stem(word,0,len(word)-1)
+                #print temp
 # it is assumed that words with less than 2 letters are meaningless
                 if len(temp)<=2:
+                    word = ''
                     continue
                 output += temp + ' '
                 word = ''

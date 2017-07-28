@@ -27,27 +27,27 @@ vector_test = vectorizer.transform(data_test)
 #you can choose to enter the value of alpha by hard-coding or during execution
 
 #alpha = float(raw_input('Enter the value of alpha for MultinomialNB: '))
-alpha = 0.007
+alpha = 0.001
 print "Current value of aplha for MultinomialNB is: ",alpha
 
 #uncomment the following for multi-class classification
 
-#for i in xrange(7):
-	# print vector_train.shape
-	# print target_train[:,i].shape
-	# print vector_test.shape
-	# print target_train[:,i]
-	# print target_test[:,i]
-	# clf = MultinomialNB(alpha = alpha)
-	# clf.fit(vector_train,target_train[:,i])
-	# pred = clf.predict(vector_test[:,i])
-	# print "accuracy for class",i+1,": ",(pred==target_test[:,i]).sum()*1.0/target_test.shape[0]*100
+for i in xrange(7):
+	print "Shape of training vector: ",vector_train.shape
+	print "Shape of training target: ",target_train[:,i].shape
+	print "Shape of testing vector: ",vector_test.shape
+	print "training target: \n",target_train[:,i]
+	print "Testing target: \n",target_test[:,i]
+	clf = MultinomialNB(alpha = alpha)
+	clf.fit(vector_train,target_train[:,i])
+	pred = clf.predict(vector_test)
+	print "accuracy for class",i+1,": ",(pred==target_test[:,i]).sum()*1.0/target_test.shape[0]*100
 
 
 #the following does classification multi-class classification but
 #an article belonging to 'awareness-finance' is treated different from 'awareness' or 'finance'
 
-clf = MultinomialNB(alpha = alpha)
-clf.fit(vector_train,target_train)
-pred = clf.predict(vector_test)
-print "accuracy : ",(pred==target_test).sum()*1.0/target_test.shape[0]*100
+# clf = MultinomialNB(alpha = alpha)
+# clf.fit(vector_train,target_train)
+# pred = clf.predict(vector_test)
+# print "accuracy : ",(pred==target_test).sum()*1.0/target_test.shape[0]*100

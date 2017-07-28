@@ -1,6 +1,8 @@
 import pickle
 import glob
 import math
+import operator
+import PorterStemmer
 
 files = glob.glob('toi/2009/*.txt')
 files += glob.glob('toi/2010/*.txt')
@@ -26,7 +28,9 @@ with open('data.pickle','rb') as d:
 for file in files:
 	with open(file, 'r') as f:
 		article = f.read()
-#		print article
+		article = PorterStemmer.access(article)
+		# print article
+		# inp = input()
 		if (article.strip()==''):
 			continue
 
@@ -55,9 +59,25 @@ for file in files:
 
 #		target[max((v,i) for i, v in enumerate(temp))[1]] = 1
 
-		target = math.pow(2,max((v,i) for i, v in enumerate(temp))[1])
-		if target==0:
+
+		#taking the top 3 classes and making their bits equal to 1. Refer to README.md for this convention of classification
+		temp_1 = [[i,j]	for i,j in enumerate(temp)]
+		temp_1.sort(key=operator.itemgetter(1))
+		target[temp_1[0][0]] = 1
+		target[temp_1[1][0]] = 1
+		target[temp_1[2][0]] = 1	
+
+#		target = math.pow(2,max((v,i) for i, v in enumerate(temp))[1])
+
+
+#Use the below of the target value of not an array, which is done for multi-class-classification
+#		if target==0:
+#			continue
+
+		if target==[0 for i in xrange(7)]:
 			continue
+
+
 		data['article'].append(article)
 		if 'toi' in file: data['article_publisher'].append('toi')
 		if 'hindu' in file: data['article_publisher'].append('hindu')
