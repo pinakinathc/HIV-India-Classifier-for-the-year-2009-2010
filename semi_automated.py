@@ -4,9 +4,29 @@ import math
 import operator
 import PorterStemmer
 
+def find_state(article):
+	citi_data = {}
+	word = ''
+	with open('cities/citi_data.pickle', 'rb') as f:
+		citi_data = pickle.load(f)
+		f.closed
+
+	for c in article:
+			if c.isalpha():
+				word += c.lower()
+			else:
+				if word:
+					for name, var in citi_data.iteritems():
+						if word in var:
+							return name
+
+					word = ''
+	return ''
+	
+
 files = glob.glob('toi/2009/*.txt')
 files += glob.glob('toi/2010/*.txt')
-files += glob.glob('hindu/2009/*.txt')
+#files += glob.glob('hindu/2009/*.txt')
 #note: uncommenting the following line may lead to memory overflow as it contains a lot of data which gets stored in the buffer.
 
 #files += glob.glob('hindu/2010/*.txt')
@@ -28,6 +48,11 @@ with open('data.pickle','rb') as d:
 for file in files:
 	with open(file, 'r') as f:
 		article = f.read()
+		state = find_state(article)
+
+		if state=='':
+			continue
+
 		article = PorterStemmer.access(article)
 		# print article
 		# inp = input()
@@ -50,6 +75,8 @@ for file in files:
 					if word in words['statistics']: temp[5] += 1
 					if word in words['stigma']: temp[6] += 1
 					number_of_words += 1
+
+
 					word = ''
 
 		target = [0 for i in xrange(7)]
@@ -83,6 +110,7 @@ for file in files:
 		if 'hindu' in file: data['article_publisher'].append('hindu')
 		if '2009' in file: data['article_year'].append('2009')
 		if '2010' in file: data['article_year'].append('2010')
+		data['article_state'] = state
 		#data['article_state'] = raw_input('Enter the Sate Code for article: ')
 		#print
 		#temp = map(int,raw_input("Please Enter the Classification bits: ").split())
