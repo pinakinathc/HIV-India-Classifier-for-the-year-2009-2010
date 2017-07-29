@@ -20,7 +20,7 @@ data = np.array(raw['article'])
 target = np.array(raw['target'])
 
 n = data.shape[0]
-n1 = 4*n/5
+n1 = 70*n/100
 print "Amount of training data: ",n1
 print "Amount of testing data: ",(n-n1)
 data_train = data[:n1]
@@ -35,17 +35,17 @@ vector_test = vectorizer.transform(data_test)
 #you can choose to enter the value of alpha by hard-coding or during execution
 
 #alpha = float(raw_input('Enter the value of alpha for MultinomialNB: '))
-alpha = 0.001
+alpha = 0.01
 print "Current value of aplha for MultinomialNB is: ",alpha
 
 #uncomment the following for multi-class classification
 total_accuracy = 0
 for i in xrange(7):
-	print "Shape of training vector: ",vector_train.shape
-	print "Shape of training target: ",target_train[:,i].shape
-	print "Shape of testing vector: ",vector_test.shape
-	print "training target: \n",target_train[:,i]
-	print "Testing target: \n",target_test[:,i]
+	# print "Shape of training vector: ",vector_train.shape
+	# print "Shape of training target: ",target_train[:,i].shape
+	# print "Shape of testing vector: ",vector_test.shape
+	# print "training target: \n",target_train[:,i]
+	# print "Testing target: \n",target_test[:,i]
 	clf = MultinomialNB(alpha = alpha)
 	clf.fit(vector_train,target_train[:,i])
 	pred = clf.predict(vector_test)

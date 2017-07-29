@@ -46,7 +46,7 @@ for file in files:
 	with open(file, 'r') as f:
 
 		#This is done to begin labeling data from where i left
-		if (counter<34):
+		if (counter<80):
 			counter += 1
 			continue
 		# print "File now coming: ",file
