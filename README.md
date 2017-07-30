@@ -16,47 +16,45 @@ this means that the article is about (from left to right):
 6. Statistics
 7. Stigma
 
-conversion of binary data to decimal follows the following order for reason of simplicity in calculation:
+We classify for each of these classes seperately
 
-decimal = 1*(2^0) + 0*(2^1) + 1*(2^2) + 0*(2^3) + 1*(2^4) + 1*(2^5) + 0*(2^6)
+States Listed in This Repository:
 
-To represent the state of an article, we have state codes:
-State Codes:
-Andaman and nicobar island: 01
-andhra pradesh: 02
-arunanchal pradesh: 03
-assam: 04
-bihar: 05
-chandighar: 06
-chattisgarh: 07
-daman and diu: 08
-delhi: 09
-goa: 10
-gujarat: 11
-haryana: 12
-himachal pradesh: 13
-jammu and kashmir: 14
-jharkhand: 15
-karnataka: 16
-kerala: 17
-madhya pradesh: 18
-maharashtra: 19
-manipur: 20
-meghalaya: 21
-mizoram: 22
-nagaland: 23
-odisha: 24
-punducherry: 25
-punjab: 26
-rajasthan: 27
-sikkim: 28
-tamil nadu: 29
-telegana: 30
-tripura: 31
-uttar pradesh: 32
-uttarakhand: 33
-west bangal: 34
-others: 35
+1. Andaman & Nicobar [AN]
+2. Andhra Pradesh [AP]
+3. Arunachal Pradesh [AR]
+4. Assam [AS]
+5. Bihar [BH]
+6. Chandigarh [CH]
+7. Chhattisgarh [CG]
+8. Dadra & Nagar Haveli [DN]
+9. Daman & Diu [DD]
+10. Delhi [DL]
+11. Goa [GO]
+12. Gujarat [GU]
+13. Haryana [HR]
+14. Himachal Pradesh [HP]
+15. Jammu & Kashmir [JK]
+16. Jharkhand [JH]
+17. Karnataka [KR]
+18. Kerala [KL]
+19. Lakshadweep [LD]
+20. Madhya Pradesh [MP]
+21. Maharashtra [MH]
+22. Manipur [MN]
+23. Meghalaya [ML]
+24. Mizoram [MM]
+25. Nagaland [NL]
+26. Orissa [OR]
+27. Pondicherry [PC]
+28. Punjab [PJ]
+29. Rajasthan [RJ]
+30. Sikkim [SK]
+31. Tamil Nadu [TN]
+32. Tripura [TR]
+33. Uttar Pradesh [UP]
+34. Uttaranchal [UT]
+35. West Bengal [WB]
 
 Format of the data:
 
@@ -82,11 +80,12 @@ The above Port Stemmer has been modified by me for application in this project.
 developed by me for use as the list of words helping in generating the future feature vector to be used by Naive Bayes Classifier
 
 5. Library Used for Multinomial Naive Bayes implementation: scikit
+   Library Used for Plotting Bar Graphs: Matplot
 
-6. List of words to do the manual classification, for training the classifier and testing accurary:
+6. [Later has been opted out due to poor results] List of words to do the manual classification, for training the classifier and testing accurary:
 
 curl "https://api.datamuse.com/words?ml=text+to+be+fetched&max=1000" > output_file.json
 
 this command is taken from: http://www.datamuse.com/api/
 
-7. Finally The accuracy after running this script is: 80.5970149254
+7. Finally The accuracy after running this script is: ~ 80 %

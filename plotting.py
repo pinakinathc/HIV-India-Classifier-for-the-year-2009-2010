@@ -28,12 +28,12 @@ for i, j in enumerate(data['article_publisher']):
 
 
 plt.figure(1)
-plt.subplot(211)
+plt.subplot(121)
 plt.bar(x,height=[toi_2009, toi_2010], color='green')
 plt.xticks(x,['TOI 2009', 'TOI 2010'])
 plt.title('Times of India')
 
-plt.subplot(212)
+plt.subplot(122)
 plt.bar(x, height=[hindu_2009, hindu_2010])
 plt.xticks(x,['HINDU 2009', 'HINDU 2010'])
 plt.title('The Hindu')
